@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Digital Architect | Fullstack Developer Portfolio</title>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"
+    rel="stylesheet" />
+  <!-- Icons -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-error-container": "#ffb2b9",
+            "primary-container": "#bc87fe",
+            "on-secondary-fixed": "#00463f",
+            "secondary": "#4af8e3",
+            "on-primary-fixed": "#000000",
+            "tertiary": "#ff9dac",
+            "error-container": "#a70138",
+            "on-primary": "#440080",
+            "secondary-container": "#006a60",
+            "outline": "#767575",
+            "outline-variant": "#484847",
+            "on-tertiary-container": "#5b0a22",
+            "surface-container-low": "#131313",
+            "tertiary-fixed": "#ff8fa2",
+            "primary-fixed-dim": "#af7aef",
+            "surface-container": "#1a1a1a",
+            "surface-dim": "#0e0e0e",
+            "error": "#ff6e84",
+            "inverse-surface": "#fcf9f8",
+            "on-surface-variant": "#adaaaa",
+            "on-error": "#490013",
+            "primary": "#c799ff",
+            "on-background": "#ffffff",
+            "surface-variant": "#262626",
+            "primary-fixed": "#bc87fe",
+            "on-secondary-fixed-variant": "#00655b",
+            "inverse-primary": "#7744b5",
+            "tertiary-container": "#fb899c",
+            "secondary-dim": "#33e9d5",
+            "surface": "#0e0e0e",
+            "primary-dim": "#ba85fb",
+            "on-primary-container": "#340064",
+            "surface-bright": "#2c2c2c",
+            "secondary-fixed-dim": "#33e9d5",
+            "inverse-on-surface": "#565555",
+            "background": "#0e0e0e",
+            "tertiary-fixed-dim": "#f18194",
+            "on-surface": "#ffffff",
+            "on-secondary-container": "#dcfff8",
+            "surface-container-lowest": "#000000",
+            "surface-tint": "#c799ff",
+            "error-dim": "#d73357",
+            "on-primary-fixed-variant": "#40007a",
+            "secondary-fixed": "#4af8e3",
+            "on-secondary": "#005b51",
+            "on-tertiary-fixed": "#390010",
+            "tertiary-dim": "#eb7c8f",
+            "surface-container-high": "#20201f",
+            "surface-container-highest": "#262626",
+            "on-tertiary-fixed-variant": "#6c192e",
+            "on-tertiary": "#69162c"
+          },
+          fontFamily: {
+            "headline": ["Space Grotesk"],
+            "body": ["Inter"],
+            "label": ["Inter"]
+          },
+          borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+        },
+      },
+    }
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    .glass-effect {
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    .glow-border:hover {
+      box-shadow: inset 0 2px 0 0 #4af8e3;
+    }
+
+    .fade-in-section {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .fade-in-section.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+  </style>
+</head>
+
+<body class="bg-background text-on-background font-body selection:bg-primary selection:text-on-primary-fixed">
+  <!-- Glowing Cursor Background -->
+  <div id="cursor-glow" class="pointer-events-none fixed inset-0 z-0 transition-opacity duration-300 opacity-0" style="background: radial-gradient(circle 600px at var(--mouse-x, 50vw) var(--mouse-y, 50vh), rgba(187,134,252,0.25), transparent 80%); filter: blur(60px); will-change: background;"></div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="fixed inset-0 bg-neutral-950/95 backdrop-blur-xl z-[60] flex flex-col items-center justify-center gap-8 translate-x-full transition-transform duration-300">
+    <button id="mobile-menu-close" class="absolute top-6 right-6 text-white p-2">
+      <span class="material-symbols-outlined text-4xl">close</span>
+    </button>
+    <a class="text-2xl font-headline font-bold text-neutral-300 hover:text-white uppercase transition-colors" href="https://blog.fitrafadilana.my.id">Blog</a>
+    <a class="text-2xl font-headline font-bold text-neutral-300 hover:text-white uppercase transition-colors" href="#skills">Skills</a>
+    <a class="text-2xl font-headline font-bold text-neutral-300 hover:text-white uppercase transition-colors" href="#projects">Projects</a>
+    <a class="text-2xl font-headline font-bold text-neutral-300 hover:text-white uppercase transition-colors" href="#contact">Contact</a>
+  </div>
+
+  <!-- TopNavBar -->
+  <nav class="fixed top-0 left-0 w-full z-50 border-b border-white/10 bg-neutral-950/60 backdrop-blur-xl">
+    <div class="flex justify-between items-center px-6 md:px-12 py-5 w-full max-w-screen-2xl mx-auto">
+      <a class="text-2xl font-black text-purple-400 dark:text-purple-300 tracking-tighter font-headline uppercase"
+        href="#">
+        Welcome
+      </a>
+      <div class="hidden md:flex items-center gap-10 font-headline tracking-tighter uppercase font-bold">
+        <a class="text-neutral-400 hover:text-white transition-colors" href="https://blog.fitrafadilana.my.id">Blog</a>
+        <a class="text-neutral-400 hover:text-white transition-colors" href="#skills">Skills</a>
+        <a class="text-neutral-400 hover:text-white transition-colors" href="#projects">Projects</a>
+        <a class="text-neutral-400 hover:text-white transition-colors" href="#contact">Contact</a>
+      </div>
+      <div class="flex items-center gap-6">
+        <div class="hidden sm:flex gap-4 items-center">
+          <a class="text-on-surface-variant hover:text-primary transition-all duration-300" href="#" target="_blank" aria-label="LinkedIn">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+          </a>
+          <a class="text-on-surface-variant hover:text-primary transition-all duration-300" href="#" target="_blank" aria-label="GitHub">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+            </svg>
+          </a>
+        </div>
+        <button
+          class="hidden sm:block bg-primary-container text-on-primary-fixed px-6 py-2 rounded-xl font-headline font-bold uppercase tracking-tighter transition-all duration-200 hover:scale-95 active:scale-90">
+          Resume
+        </button>
+      </div>
+      <!-- Mobile Menu Toggle -->
+      <button id="mobile-menu-btn" class="md:hidden text-white flex items-center p-2">
+        <span class="material-symbols-outlined text-3xl">menu</span>
+      </button>
+    </div>
+  </nav>
+  <main class="relative z-10">
+    <!-- Hero Section -->
+    <section class="relative min-h-[100svh] flex px-6 md:px-24 pt-32 pb-24 overflow-hidden fade-in-section" id="about">
+      <!-- Background Aura -->
+      <div
+        class="absolute top-1/4 right-[-10%] w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] pointer-events-none">
+      </div>
+      <div class="relative z-10 max-w-5xl my-auto">
+        <span class="font-label text-secondary tracking-widest uppercase mb-6 block">Available for new
+          opportunities</span>
+        <h1 class="font-headline text-5xl sm:text-6xl md:text-8xl font-extrabold tracking-tighter leading-none mb-8">
+          HI, I'M <span class="text-primary">Fitra</span><br />
+          FULLSTACK DEVELOPER.
+        </h1>
+        <p class="text-on-surface-variant text-xl md:text-2xl max-w-2xl mb-12 leading-relaxed">
+          Architecting high-performance digital ecosystems with clean code and intuitive design. Turning complex
+          requirements into elegant, scalable solutions.
+        </p>
+        <div class="flex flex-wrap gap-6">
+          <a class="group relative px-8 py-4 bg-gradient-to-br from-primary to-primary-container text-on-primary-fixed rounded-xl font-headline font-bold uppercase tracking-tighter flex items-center gap-2 transition-transform hover:scale-95 active:scale-90"
+            href="#projects">
+            View My Work
+            <span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+          </a>
+          <a class="px-8 py-4 border border-outline-variant/30 hover:bg-surface-container-highest rounded-xl font-headline font-bold uppercase tracking-tighter transition-all duration-300"
+            href="#contact">
+            Contact Me
+          </a>
+        </div>
+      </div>
+    </section>
+    <!-- Skills Section (Bento Grid) -->
+    <section class="py-24 px-6 md:px-24 bg-surface-container-low fade-in-section" id="skills">
+      <div class="max-w-screen-2xl mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
+          <div>
+            <h2 class="font-label text-primary tracking-widest uppercase mb-2">Mastery</h2>
+            <h3 class="font-headline text-5xl font-bold tracking-tighter uppercase">The Toolkit</h3>
+          </div>
+          <p class="text-on-surface-variant font-body max-w-md">Expertise across the entire stack, from pixel-perfect
+            interfaces to robust database architecture.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Frontend -->
+          <div class="bg-surface-container p-8 rounded-2xl border border-outline-variant/10">
+            <div class="flex items-center gap-4 mb-8">
+              <div class="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center">
+                <span class="material-symbols-outlined text-secondary"
+                  style="font-variation-settings: 'FILL' 1;">layers</span>
+              </div>
+              <h4 class="font-headline text-2xl font-bold uppercase tracking-tighter">Frontend</h4>
+            </div>
+            <ul class="space-y-4">
+              <li class="flex items-center justify-between group">
+                <span class="text-on-surface-variant group-hover:text-white transition-colors">React / Next.js</span>
+                <div class="flex gap-1">
+                  <div class="w-2 h-2 rounded-full bg-secondary"></div>
+                  <div class="w-2 h-2 rounded-full bg-secondary"></div>
+                  <div class="w-2 h-2 rounded-full bg-secondary"></div>
+                </div>
+              </li>
+              <li class="flex items-center justify-between group">
+                <span class="text-on-surface-variant group-hover:text-white transition-colors">Vue.js / Nuxt</span>
+                <div class="flex gap-1">
+                  <div class="w-2 h-2 rounded-full bg-secondary"></div>
+                  <div class="w-2 h-2 rounded-full bg-secondary"></div>
+                  <div class="w-2 h-2 rounded-full bg-secondary/20"></div>
+                </div>
+              </li>
+              <li class="flex items-center justify-between group">
+                <span class="text-on-surface-variant group-hover:text-white transition-colors">Tailwind CSS</span>
+                <div class="flex gap-1">
+                  <div class="w-2 h-2 rounded-full bg-secondary"></div>
+                  <div class="w-2 h-2 rounded-full bg-secondary"></div>
+                  <div class="w-2 h-2 rounded-full bg-secondary"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <!-- Backend -->
+          <div class="bg-surface-container p-8 rounded-2xl border border-outline-variant/10">
+            <div class="flex items-center gap-4 mb-8">
+              <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+                <span class="material-symbols-outlined text-primary"
+                  style="font-variation-settings: 'FILL' 1;">database</span>
+              </div>
+              <h4 class="font-headline text-2xl font-bold uppercase tracking-tighter">Backend</h4>
+            </div>
+            <ul class="space-y-4">
+              <li class="flex items-center justify-between group">
+                <span class="text-on-surface-variant group-hover:text-white transition-colors">Node.js / NestJS</span>
+                <div class="flex gap-1">
+                  <div class="w-2 h-2 rounded-full bg-primary"></div>
+                  <div class="w-2 h-2 rounded-full bg-primary"></div>
+                  <div class="w-2 h-2 rounded-full bg-primary"></div>
+                </div>
+              </li>
+              <li class="flex items-center justify-between group">
+                <span class="text-on-surface-variant group-hover:text-white transition-colors">PostgreSQL</span>
+                <div class="flex gap-1">
+                  <div class="w-2 h-2 rounded-full bg-primary"></div>
+                  <div class="w-2 h-2 rounded-full bg-primary"></div>
+                  <div class="w-2 h-2 rounded-full bg-primary"></div>
+                </div>
+              </li>
+              <li class="flex items-center justify-between group">
+                <span class="text-on-surface-variant group-hover:text-white transition-colors">GraphQL / Apollo</span>
+                <div class="flex gap-1">
+                  <div class="w-2 h-2 rounded-full bg-primary"></div>
+                  <div class="w-2 h-2 rounded-full bg-primary"></div>
+                  <div class="w-2 h-2 rounded-full bg-primary/20"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <!-- Tools -->
+          <div class="bg-surface-container p-8 rounded-2xl border border-outline-variant/10">
+            <div class="flex items-center gap-4 mb-8">
+              <div class="w-12 h-12 rounded-lg bg-tertiary/10 flex items-center justify-center">
+                <span class="material-symbols-outlined text-tertiary"
+                  style="font-variation-settings: 'FILL' 1;">settings</span>
+              </div>
+              <h4 class="font-headline text-2xl font-bold uppercase tracking-tighter">Tools</h4>
+            </div>
+            <ul class="space-y-4">
+              <li class="flex items-center justify-between group">
+                <span class="text-on-surface-variant group-hover:text-white transition-colors">Docker</span>
+                <div class="flex gap-1">
+                  <div class="w-2 h-2 rounded-full bg-tertiary"></div>
+                  <div class="w-2 h-2 rounded-full bg-tertiary"></div>
+                  <div class="w-2 h-2 rounded-full bg-tertiary/20"></div>
+                </div>
+              </li>
+              <li class="flex items-center justify-between group">
+                <span class="text-on-surface-variant group-hover:text-white transition-colors">AWS / Vercel</span>
+                <div class="flex gap-1">
+                  <div class="w-2 h-2 rounded-full bg-tertiary"></div>
+                  <div class="w-2 h-2 rounded-full bg-tertiary"></div>
+                  <div class="w-2 h-2 rounded-full bg-tertiary"></div>
+                </div>
+              </li>
+              <li class="flex items-center justify-between group">
+                <span class="text-on-surface-variant group-hover:text-white transition-colors">CI/CD &amp; Git</span>
+                <div class="flex gap-1">
+                  <div class="w-2 h-2 rounded-full bg-tertiary"></div>
+                  <div class="w-2 h-2 rounded-full bg-tertiary"></div>
+                  <div class="w-2 h-2 rounded-full bg-tertiary"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Projects Section -->
+    <section class="py-24 px-6 md:px-24 fade-in-section" id="projects">
+      <div class="max-w-screen-2xl mx-auto">
+        <div class="mb-20">
+          <h2 class="font-label text-secondary tracking-widest uppercase mb-2">Portfolio</h2>
+          <h3 class="font-headline text-5xl font-bold tracking-tighter uppercase">Selected Works</h3>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <!-- Project 1 -->
+          <div class="group bg-surface-container-lowest overflow-hidden transition-all duration-500 glow-border">
+            <div class="aspect-video relative overflow-hidden">
+              <img alt="E-commerce Platform"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
+                data-alt="Modern minimalist e-commerce dashboard interface with clean data visualization and vibrant product displays on a dark background"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnedkDfkSIrGoTkOnPD-fWpjZeoUomYD3Bw358Z7LIULbQgZgqWdG8wntDMQ3HFjpcWGHuxBXBciJlVZxzdzvCM8AVvCcvqOab_LAYv0O0c3ZSInuHipklEwaunlwOB_N4CR3z7ZIMfJT1Dus8QAUn1w0dhQc24YpM5hwKD77twQ2N61tvaOHUsHGLoVuk1V8xQnB8S68qCE6GzAAPG3b0f_7rvFs36evCcl-mrVRWUvhx_f1bWVA_Le8pFySbzWTdI81H5KGtDqmx" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-60"></div>
+            </div>
+            <div class="p-8">
+              <div class="flex gap-3 mb-4">
+                <span
+                  class="bg-surface-container-high text-secondary text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full flex items-center gap-1">
+                  <div class="w-1.5 h-1.5 bg-secondary rounded-full"></div> Next.js
+                </span>
+                <span
+                  class="bg-surface-container-high text-secondary text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full flex items-center gap-1">
+                  <div class="w-1.5 h-1.5 bg-secondary rounded-full"></div> Stripe
+                </span>
+              </div>
+              <h4 class="font-headline text-3xl font-bold tracking-tighter uppercase mb-3">E-commerce Engine</h4>
+              <p class="text-on-surface-variant font-body mb-6 leading-relaxed">
+                A high-performance storefront with headless CMS integration, real-time inventory management, and a
+                custom checkout flow.
+              </p>
+              <a class="inline-flex items-center gap-2 font-label text-sm uppercase font-bold tracking-widest text-primary hover:text-white transition-colors group/link"
+                href="#">
+                Explore Case Study
+                <span
+                  class="material-symbols-outlined transition-transform group-hover/link:translate-x-1">arrow_right_alt</span>
+              </a>
+            </div>
+          </div>
+          <!-- Project 2 -->
+          <div class="group bg-surface-container-lowest overflow-hidden transition-all duration-500 glow-border">
+            <div class="aspect-video relative overflow-hidden">
+              <img alt="Fintech Dashboard"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
+                data-alt="Futuristic financial dashboard showing crypto analytics and trading graphs with neon purple and teal accent lighting"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrMGYsPfiBhnORVNyKwfk8JSvjQZvbhiia1I9F6nnxuyugoZ7ADDHLVxNkz-RUp9SmI6G1IFKXtPWMZKyOeuDvMxGQkBPODuvmKrBegMfMlxzytg_oVpGTFWQpp8XGzEXnJf1qdr4iYE19uMEDnN9RBeLIw223GFN53GmRWlpc9yHPg0UAtyXHrM_hpf5seUFqi1Z0Jrpb6nW40_BeD3_bj6xIrPGzO83O0B1MWDs9IX8_xtPzqcowtUcuE14eaRPMG_J-rVDp9vsB" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-60"></div>
+            </div>
+            <div class="p-8">
+              <div class="flex gap-3 mb-4">
+                <span
+                  class="bg-surface-container-high text-secondary text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full flex items-center gap-1">
+                  <div class="w-1.5 h-1.5 bg-secondary rounded-full"></div> PostgreSQL
+                </span>
+                <span
+                  class="bg-surface-container-high text-secondary text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full flex items-center gap-1">
+                  <div class="w-1.5 h-1.5 bg-secondary rounded-full"></div> GraphQL
+                </span>
+              </div>
+              <h4 class="font-headline text-3xl font-bold tracking-tighter uppercase mb-3">Zenith Finance</h4>
+              <p class="text-on-surface-variant font-body mb-6 leading-relaxed">
+                Advanced data visualization platform for crypto assets. Features custom charting engines and
+                sub-millisecond data streaming.
+              </p>
+              <a class="inline-flex items-center gap-2 font-label text-sm uppercase font-bold tracking-widest text-primary hover:text-white transition-colors group/link"
+                href="#">
+                Explore Case Study
+                <span
+                  class="material-symbols-outlined transition-transform group-hover/link:translate-x-1">arrow_right_alt</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- CTA Section -->
+    <section class="py-32 px-6 md:px-24 fade-in-section" id="contact">
+      <div class="max-w-4xl mx-auto bg-surface-container rounded-3xl p-12 md:p-20 text-center relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent">
+        </div>
+        <h3 class="font-headline text-5xl md:text-7xl font-bold tracking-tighter uppercase mb-8">
+          Ready to build the <span class="text-secondary">future?</span>
+        </h3>
+        <p class="text-on-surface-variant text-xl mb-12 max-w-xl mx-auto">
+          Currently accepting freelance projects and architectural consultations. Let's start a conversation.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-6">
+          <button
+            class="bg-primary text-on-primary-fixed px-10 py-5 rounded-xl font-headline font-bold uppercase tracking-tighter transition-all hover:scale-95">
+            Start a Project
+          </button>
+          <button
+            class="border border-outline-variant/30 hover:bg-surface-container-highest px-10 py-5 rounded-xl font-headline font-bold uppercase tracking-tighter transition-all">
+            Schedule a Call
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- Footer -->
+  <footer class="w-full border-t border-white/5 bg-neutral-900 dark:bg-neutral-900 relative z-10">
+    <div class="flex flex-col md:flex-row justify-between items-center py-12 px-8 md:px-24 w-full gap-6">
+      <div class="flex flex-col gap-2">
+        <span class="text-lg font-bold text-neutral-200 font-headline uppercase tracking-tighter">Digital
+          Architect</span>
+        <p class="font-['Inter'] text-xs tracking-widest uppercase text-neutral-500">© 2024 DIGITAL ARCHITECT. ALL
+          RIGHTS RESERVED.</p>
+      </div>
+      <div class="flex gap-8">
+        <a class="font-['Inter'] text-xs tracking-widest uppercase text-neutral-500 hover:text-purple-400 transition-colors opacity-80 hover:opacity-100"
+          href="#">LinkedIn</a>
+        <a class="font-['Inter'] text-xs tracking-widest uppercase text-neutral-500 hover:text-purple-400 transition-colors opacity-80 hover:opacity-100"
+          href="#">GitHub</a>
+        <a class="font-['Inter'] text-xs tracking-widest uppercase text-neutral-500 hover:text-purple-400 transition-colors opacity-80 hover:opacity-100"
+          href="#">Email</a>
+      </div>
+      <div class="flex gap-4">
+        <div
+          class="w-10 h-10 rounded-full border border-outline-variant/20 flex items-center justify-center hover:border-primary/50 transition-all group">
+          <span
+            class="material-symbols-outlined text-neutral-500 group-hover:text-primary transition-colors">public</span>
+        </div>
+        <div
+          class="w-10 h-10 rounded-full border border-outline-variant/20 flex items-center justify-center hover:border-primary/50 transition-all group">
+          <span
+            class="material-symbols-outlined text-neutral-500 group-hover:text-primary transition-colors">code</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script>
+    // Cursor Glow Effect
+    const glow = document.getElementById('cursor-glow');
+    window.addEventListener('mousemove', (e) => {
+      glow.style.setProperty('--mouse-x', `${e.clientX}px`);
+      glow.style.setProperty('--mouse-y', `${e.clientY}px`);
+      glow.classList.remove('opacity-0');
+    });
+    window.addEventListener('mouseout', () => glow.classList.add('opacity-0'));
+
+    // Mobile Menu
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenuClose = document.getElementById('mobile-menu-close');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileLinks = mobileMenu.querySelectorAll('a');
+
+    mobileMenuBtn?.addEventListener('click', () => {
+      mobileMenu.classList.remove('translate-x-full');
+    });
+
+    mobileMenuClose?.addEventListener('click', () => {
+      mobileMenu.classList.add('translate-x-full');
+    });
+
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('translate-x-full');
+      });
+    });
+
+    // Custom Smooth Scrolling (Slow to Fast - Ease In)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return; // Ignore empty hashes
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          e.preventDefault();
+          
+          const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+          const startPosition = window.pageYOffset;
+          const distance = targetPosition - startPosition;
+          const duration = 600; // ms
+          let start = null;
+          
+          const easeInCubic = t => t * t * t;
+          
+          window.requestAnimationFrame(function step(timestamp) {
+            if (!start) start = timestamp;
+            const progress = timestamp - start;
+            const percent = Math.min(progress / duration, 1);
+            
+            window.scrollTo(0, startPosition + distance * easeInCubic(percent));
+            
+            if (progress < duration) {
+              window.requestAnimationFrame(step);
+            }
+          });
+        }
+      });
+    });
+
+    // Fade-in on scroll Observer
+    const faders = document.querySelectorAll('.fade-in-section');
+    const appearOptions = {
+      threshold: 0.15,
+      rootMargin: "0px 0px -50px 0px"
+    };
+
+    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) {
+          return;
+        } else {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, appearOptions);
+
+    faders.forEach(fader => {
+      appearOnScroll.observe(fader);
+    });
+  </script>
+</body>
+
+</html>
