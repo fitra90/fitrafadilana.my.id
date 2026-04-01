@@ -1,0 +1,25 @@
+{
+  "name": "fitrafadilana.my.id",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.min.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fitra90/fitrafadilana.my.id.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fitra90/fitrafadilana.my.id/issues"
+  },
+  "homepage": "https://github.com/fitra90/fitrafadilana.my.id#readme",
+  "devDependencies": {
+    "@tailwindcss/container-queries": "^0.1.1",
+    "@tailwindcss/forms": "^0.5.11",
+    "tailwindcss": "^3.4.19"
+  }
+}
